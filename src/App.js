@@ -37,11 +37,11 @@ export default function App() {
     gettodos();
   }, [gettodos]);
 
-  function checkAdult(age) {
-    return age.tickField === true;
+  function completed(checkBox) {
+    return checkBox.tickField === true;
   }
 
-  const result = todos.filter(checkAdult);
+  const result = todos.filter(completed);
 
   useEffect(() => {
     setRemaining(result.length);
@@ -81,7 +81,7 @@ export default function App() {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        onKeyPress={(event) => {
+        onKeyDown={(event) => {
           if (text !== "" && event.key === "Enter") {
             clickHandler();
           }
